@@ -6,9 +6,11 @@ lib_LIBRARIES = libexample.a
 libexample_a_SOURCES = src/example.c
 
 if RUN_TESTS
-TESTS = test_example
-check_PROGRAMS = test_example
+TEST_LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) $(top_srcdir)/build-aux/tap-driver.sh
+TESTS = test/test_example.test
+EXTRA_DIST = $(TESTS)
+check_PROGRAMS = test/test_example
 
-test_example_SOURCES = test/test_example.c
-test_example_LDADD = libexample.a
+test_test_example_SOURCES = test/test_example.c
+test_test_example_LDADD = libexample.a
 endif

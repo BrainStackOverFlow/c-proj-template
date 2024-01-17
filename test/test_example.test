@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+test/test_example --tap
+
+ret_val=$?
+
+if [[ $ret_val -eq 0 || $ret_val -eq 1 ]]; then
+    exit 0
+fi
+
+exit $ret_val
